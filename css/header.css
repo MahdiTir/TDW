@@ -1,0 +1,217 @@
+
+:root {
+    --primary: #3498db;
+    --secondary: #2ecc71;
+    --accent: #e74c3c;
+    --neutral: #f8fafc;
+    --text-dark: #2c3e50;
+}
+
+/* Header principal */
+.top-header {
+    height: 100px; /* Fixe une hauteur pour le header */
+    /* overflow: hidden; /* Empêche tout débordement */
+    padding: 0; /* Supprime les marges internes */
+    display: flex;
+    align-items: center;
+    background-color: var(--neutral);
+}
+
+
+
+/* Conteneur du logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    overflow: hidden;
+    margin-left: -40px; 
+}
+
+/* Logo */
+.logo-container svg {
+    max-height: 80%; /* Le logo occupe 80% de la hauteur */
+    width: auto; /* Conserve les proportions du logo */
+    object-fit: contain; /* Ajuste l'image à l'espace disponible */
+}
+
+.logo-container svg .parabole {
+    opacity: 0;
+}
+
+.logo-container .logo-text {
+    opacity: 1;
+    transition: all 750ms ease-out 500ms;
+}
+
+.logo-container .wave {
+    transition: all 1250ms ease-out;
+}
+
+.logo-container:hover .logo-text {
+    opacity: 0;
+    transition: all 750ms ease-in;
+}
+
+.logo-container .parabole, .logo-container .parabole-head {
+    opacity: 0;
+    transition: all 1250ms ease-out;
+}
+
+.logo-container:hover .parabole, .logo-container:hover .wave,.logo-container:hover .parabole-head {
+    opacity: 1;
+    transform: scale(0.75,0.75) translateY(-0.5rem);
+    transform-origin: center;
+    transition: all 750ms ease-in;
+}
+
+.logo-container:hover .wave {
+    animation: pulse 600ms 750ms;
+}
+
+.logo-container:hover .wave:nth-child(2) {
+    animation-delay: calc(750ms + 400ms);
+}
+
+.logo-container:hover .wave:nth-child(3) {
+    animation-delay: calc(750ms + 800ms);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        stroke: var(--text-dark);
+    }
+
+    80% {
+        stroke: var(--primary);
+    }
+    
+}
+
+/* Menu de navigation */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, var(--accent) 0 50%, var(--primary) 50%);
+    background-size: 200%;
+    background-position: 100%;
+    font-weight: 500;
+    transition: background-position 475ms ease-out;
+}
+
+.main-nav a:hover {
+    background-position: 0%;
+    transition: background-position 250ms ease-in;
+}
+
+/* Liens des réseaux sociaux */
+.social-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    align-items: center;
+}
+
+.social-links a {
+    color: var(--primary);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .main-nav ul {
+        gap: 1rem;
+    }
+
+    .logo-container img {
+        max-height: 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .main-nav {
+        order: 3;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: flex-end;
+    }
+}
+
+/* Bouton utilisateur */
+/* Styles pour les dropdowns */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1050;
+    display: none;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0;
+    background-color: var(--neutral);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 1.5rem;
+    clear: both;
+    color: var(--text-dark);
+    text-align: inherit;
+    text-decoration: none;
+    background-color: transparent;
+    border: 0;
+}
+
+.dropdown-item:hover {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}

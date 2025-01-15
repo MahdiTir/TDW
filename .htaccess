@@ -1,0 +1,10 @@
+Options All -Indexes
+
+RewriteEngine On
+
+
+RewriteBase /association1/
+
+
+RewriteRule ^([-a-zA-Z0-9]+)/([-a-zA-Z0-9]+)$ index.php?page=$1&action=$2 [QSA,L]
+RewriteRule ^([-a-zA-Z0-9]+)$ index.php?page=$1 [QSA,L]
